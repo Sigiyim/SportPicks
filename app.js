@@ -2,6 +2,8 @@ var Db = require('mongodb').Db;
 var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require("cookie-parser");
+var expressSession = require("express-session");
 var path = require("path");
 
 var app = express();
@@ -11,6 +13,8 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cookieParser());
+app.use(expressSession({secret: 'hMrtq6nzoyELXChVqCKVGyBpudZjtmpPOE5AzVzz9zYIFe0l4YovMkdoBb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
@@ -28,10 +32,42 @@ Db.connect(connectionString, function(err, db) {
         var body = req.body;
 
         if ( body.password == body.password2 ) {
-            res.send("You did it");
+            var user = {
+                username : body.username
+                , password: body.password
+            };
+
+            req.db.collection('users').insert(user, function(err, doc) {
+                if ( err ) {
+                    res.send({ result : 'failure', message : err });
+                } else {
+                    res.send({ result : 'success' });
+                }
+            });
         } else {
             res.render('user/new', {});
         }
+    });
+
+    app.get('/user/login', function(req, res) {
+        res.render('user/login', {});
+    });
+    app.post('/user/login', function(req, res) {
+        var body = req.body;
+        var user = {
+            username : body.username
+            , password: body.password
+        };
+
+        req.db.collection('users').find(user, function(err, doc) {
+            if ( err ) {
+                res.send({ result : 'failure', message : err });
+            } else {
+                req.session.user = user;
+
+                res.send({ result : 'success', user : req.session.user });
+            }
+        })
     });
 
     var server = app.listen(app.get('port'), function() {

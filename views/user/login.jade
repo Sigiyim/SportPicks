@@ -1,0 +1,13 @@
+html
+    head
+        title.
+            Login
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    body
+        div(class="container")
+            h1.
+                Login
+            form(method="post", action="/user/login")
+                input(type="text", placeholder="Username", class="form-control", name="username")
+                input(type="password", placeholder="Password", class="form-control", name="password")
+                input(type="submit", class="btn btn-primary btn-block", value="Login")
