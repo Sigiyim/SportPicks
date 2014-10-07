@@ -1,0 +1,16 @@
+html
+    head
+        title="Week " + week
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    body
+        div(class="container")
+            h1="Week " + week
+            for game in games
+                form
+                    div(class="col-xs-2")
+                        input(type="radio", class="form-control", name=game._id, value=game.awayTeam)
+                        span=game.awayTeam
+                    div(class="col-xs-2")
+                        input(type="radio", class="form-control", name=game._id, value=game.homeTeam)
+                        span=game.homeTeam
+                    input(type="button", class="btn btn-primary", value="Pick")

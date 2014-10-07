@@ -86,6 +86,37 @@ Db.connect(connectionString, function(err, db) {
         res.render('index', { weeks : weeks });
     });
 
+    app.get('/games/week', function(req, res) {
+        var weekNum = parseInt(req.query['week']);
+
+        req.db.collection('games')
+            .find({ week : weekNum })
+            .toArray(function(err, docs) {
+                console.log(docs);
+                res.render('games/week', { week : weekNum, games : docs });
+            });
+    });
+    app.get('/games/new', function(req, res) {
+        res.render('games/new', {});
+    });
+    app.post('/games/new', function(req, res) {
+        var body = req.body;
+        var game = {
+            week: parseInt(body.week)
+            , awayTeam: body.awayTeam
+            , homeTeam: body.homeTeam
+            , date: body.date
+        }
+
+        db.collection("games").insert(game, function(err, doc) {
+            if ( err ) {
+                res.send("Error creating game");
+            } else {
+                res.redirect('/games/week?week=' + game.week);
+            }
+        });
+    });
+
     var server = app.listen(app.get('port'), function() {
         console.log('App listening on port %d', app.get('port'));
     });

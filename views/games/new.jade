@@ -1,0 +1,13 @@
+html
+    head
+        title.
+            Add Game
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    body
+        div(class="container")
+            form(method="post", action="/games/new")
+                input(type="text", placeholder="Week", name="week", class="form-control")
+                input(type="text", placeholder="Away Team", name="awayTeam", class="form-control")
+                input(type="text", placeholder="Home Team", name="homeTeam", class="form-control")
+                input(type="date", placeholder="Date", name="date", class="form-control")
+                input(type="submit", class="btn btn-primary btn-block", value="Submit")
