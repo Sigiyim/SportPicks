@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cbe0268-b137-4e00-8c53-cb2a878e5adb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/user/new.jade" afterPath="$PROJECT_DIR$/views/user/new.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SportPicks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="3" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+            <state line="34" column="7" selection-start="937" selection-end="937" vertical-scroll-proportion="0.65637064" vertical-offset="0" max-vertical-offset="777">
               <folding />
             </state>
           </provider>
@@ -37,16 +40,16 @@
       <file leaf-file-name="new.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/user/new.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="22" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+            <state line="13" column="37" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="23" selection-start="227" selection-end="227" vertical-scroll-proportion="0.1992032" vertical-offset="0" max-vertical-offset="753">
+            <state line="9" column="28" selection-start="210" selection-end="210" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="285">
               <folding />
             </state>
           </provider>
@@ -68,10 +71,10 @@
         <option value="$PROJECT_DIR$/site/iisnode.yml" />
         <option value="$PROJECT_DIR$/site/app.js" />
         <option value="$PROJECT_DIR$/site/package.json" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/views/user/new.jade" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/user/new.jade" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -286,13 +289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="3" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/meta.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="23" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.33333334" vertical-offset="521" max-vertical-offset="5550">
@@ -300,16 +296,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/user/new.jade">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="22" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+        <state line="9" column="28" selection-start="210" selection-end="210" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="285">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/views/user/new.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="23" selection-start="227" selection-end="227" vertical-scroll-proportion="0.1992032" vertical-offset="0" max-vertical-offset="753">
+        <state line="13" column="37" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="7" selection-start="937" selection-end="937" vertical-scroll-proportion="0.65637064" vertical-offset="0" max-vertical-offset="777">
           <folding />
         </state>
       </provider>

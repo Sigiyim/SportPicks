@@ -7,8 +7,8 @@ html
         div(class="container")
             h1.
                 Create a new user account.
-            form
-                input(type="text", class="form-control", placeholder="Username")
-                input(type="password", class="form-control", placeholder="Password")
-                input(type="password", class="form-control", placeholder="Confirm Password")
+            form(method="post", action="/user/new")
+                input(type="text", name="username", class="form-control", placeholder="Username")
+                input(type="password", name="password", class="form-control", placeholder="Password")
+                input(type="password", name="password2", class="form-control", placeholder="Confirm Password")
                 input(type="submit", class="btn btn-primary btn-block", value="Create")
