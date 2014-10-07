@@ -26,7 +26,8 @@ Db.connect(connectionString, function(err, db) {
             req.url != '/user/login' &&
             req.url != '/user/new' )
         {
-            res.redirect('/user/login');
+            res.send(req.url);
+//            res.redirect('/user/login');
         }
 
         next();
