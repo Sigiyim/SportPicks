@@ -22,6 +22,10 @@ Db.connect(connectionString, function(err, db) {
     app.all('*', function(req, res, next) {
         req.db = db;
 
+        if ( !req.session.user && req.url != '/user/login' ) {
+            res.redirect('/user/login');
+        }
+
         next();
     });
 
@@ -65,9 +69,18 @@ Db.connect(connectionString, function(err, db) {
             } else {
                 req.session.user = user;
 
-                res.send({ result : 'success', user : req.session.user });
+                res.redirect("/");
             }
-        })
+        });
+    });
+
+    app.get('/', function(req, res) {
+        var weeks = [];
+        for( var i = 1; i <= 17; i++ ) {
+            weeks.push(i);
+        }
+
+        res.render('index', { weeks : weeks });
     });
 
     var server = app.listen(app.get('port'), function() {

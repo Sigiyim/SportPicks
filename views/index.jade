@@ -1,0 +1,12 @@
+html
+    head
+        title.
+            Home
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    body
+        div(class="container")
+            h1.
+                Weeks
+            for week in weeks
+                p
+                    a(href="/games/week?week=" + week)=week
