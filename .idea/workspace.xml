@@ -37,7 +37,7 @@
       <file leaf-file-name="new.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/user/new.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="38" selection-start="219" selection-end="219" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="777">
+            <state line="13" column="87" selection-start="622" selection-end="622" vertical-scroll-proportion="0.25096524" vertical-offset="0" max-vertical-offset="777">
               <folding />
             </state>
           </provider>
@@ -295,9 +295,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/meta.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="23" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.33333334" vertical-offset="521" max-vertical-offset="5550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/user/new.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="38" selection-start="219" selection-end="219" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="777">
+        <state line="13" column="87" selection-start="622" selection-end="622" vertical-scroll-proportion="0.25096524" vertical-offset="0" max-vertical-offset="777">
           <folding />
         </state>
       </provider>
