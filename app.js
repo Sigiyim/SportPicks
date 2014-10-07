@@ -4,9 +4,10 @@ var app = express();
 
 var port = process.env.port || 3000;
 
-var server = http.createServer(function(req, res) {
-    res.writeHead(200, { 'Content-Type' : 'text/plain' });
-    res.end('Hello, World\n');
+app.get('/', function(req, res) {
+    res.send("Hello, World!");
 });
 
-server.listen(port);
+var server = app.listen(port, function() {
+    console.log('App listening on port %d', port);
+});
