@@ -22,13 +22,12 @@ Db.connect(connectionString, function(err, db) {
     app.all('*', function(req, res, next) {
         req.db = db;
 
-        if ( !req.session.user &&
-            req.url != '/user/login' &&
-            req.url != '/user/new' )
-        {
-            res.send(req.url);
+//        if ( !req.session.user &&
+//            req.url != '/user/login' &&
+//            req.url != '/user/new' )
+//        {
 //            res.redirect('/user/login');
-        }
+//        }
 
         next();
     });
