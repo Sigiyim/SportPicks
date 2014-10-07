@@ -91,9 +91,25 @@ Db.connect(connectionString, function(err, db) {
 
         req.db.collection('games')
             .find({ week : weekNum })
-            .toArray(function(err, docs) {
-                console.log(docs);
-                res.render('games/week', { week : weekNum, games : docs });
+            .toArray(function(err, games) {
+
+                //Get user picks
+                req.db.collection('picks')
+                    .find({
+                        user : req.session.user.username
+                        , week: weekNum
+                    })
+                    .toArray(function(err, picks) {
+                        var pickObj = {};
+
+                        picks.forEach(function(item) {
+                            pickObj[item.game] = item;
+                        });
+
+                        console.log(pickObj);
+
+                        res.render('games/week', { week : weekNum, games : games, picks : pickObj });
+                    });
             });
     });
     app.get('/games/new', function(req, res) {
@@ -114,6 +130,21 @@ Db.connect(connectionString, function(err, db) {
             } else {
                 res.redirect('/games/week?week=' + game.week);
             }
+        });
+    });
+    app.post('/games/pick', function(req, res) {
+        var body = req.body;
+        var user = req.session.user;
+
+        var pick = {
+            game : body._id
+            , week : parseInt(body.week)
+            , pick: body[body._id]
+            , user: user.username
+        };
+
+        db.collection('picks').insert(pick, function(err, doc) {
+            res.redirect('/games/week?week=' + body.week);
         });
     });
 

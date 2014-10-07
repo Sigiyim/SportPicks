@@ -5,6 +5,8 @@ html
         link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
     body
         div(class="container")
+            h1.
+                Add New Game
             form(method="post", action="/games/new")
                 input(type="text", placeholder="Week", name="week", class="form-control")
                 input(type="text", placeholder="Away Team", name="awayTeam", class="form-control")
