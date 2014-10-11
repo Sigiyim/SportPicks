@@ -19,7 +19,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 app.use(function(req, res, next) {
-    next();
+    if ( ! req.session.user &&
+            (req.url != '/user/login' && req.url != '/user/new')
+        )
+    {
+        console.log('Redirecting');
+        res.redirect('/user/login');
+    }
+    else {
+        next();
+    }
 });
 
 Db.connect(connectionString, function(err, db) {
