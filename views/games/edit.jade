@@ -1,0 +1,15 @@
+html
+    head
+        title.
+            Edit Game
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    body
+        div(class="container")
+            form(method="post", action="/games/edit")
+                input(type="text", placeholder="Week", class="form-control", value=game.week, name="week")
+                input(type="text", placeholder="Away Team", class="form-control", value=game.awayTeam, name="awayTeam")
+                input(type="text", placeholder="Home Team", class="form-control", value=game.homeTeam, name="homeTeam")
+                input(type="text", placeholder="Date", class="form-control", value=game.date, name="date")
+                input(type="text", placeholder="Winner", class="form-control", value=game.winner, name="winner")
+                input(type="hidden", value=game._id, name="_id")
+                input(type="submit", class="btn btn-primary btn-block", value="Submit")

@@ -1,4 +1,5 @@
 var Db = require('mongodb').Db;
+var ObjectID = require('mongodb').ObjectID;
 var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -34,13 +35,6 @@ app.use(function(req, res, next) {
 Db.connect(connectionString, function(err, db) {
     app.all('*', function(req, res, next) {
         req.db = db;
-
-//        if ( !req.session.user &&
-//            req.url != '/user/login' &&
-//            req.url != '/user/new' )
-//        {
-//            res.redirect('/user/login');
-//        }
 
         next();
     });
@@ -126,6 +120,10 @@ Db.connect(connectionString, function(err, db) {
                     });
             });
     });
+
+    /*
+    * CREATE A NEW GAME
+    */
     app.get('/games/new', function(req, res) {
         res.render('games/new', {});
     });
@@ -146,6 +144,44 @@ Db.connect(connectionString, function(err, db) {
             }
         });
     });
+
+    /*
+    * EDIT EXISTING GAME
+    */
+    app.get('/games/edit/:id', function(req, res) {
+        var db = req.db;
+        var id = req.params.id;
+
+        db.collection('games').findOne({ _id : ObjectID(id) }, function(err, doc) {
+            if ( err ) {
+                res.send({ result : 'failure', message: 'Game not found' });
+            } else {
+                console.log(doc);
+                res.render('games/edit', { game : doc });
+            }
+        })
+    });
+    app.post('/games/edit', function(req, res) {
+        var body = req.body;
+        var game = {
+            week : parseInt(body.week)
+            , awayTeam : body.awayTeam
+            , homeTeam : body.homeTeam
+            , date: body.date
+            , winner : body.winner
+            , _id : ObjectID(body._id)
+        };
+
+        db.collection('games').save(game, {w:1}, function(err, result) {
+            if ( err ) {
+                res.send({ result : 'failure', message : err});
+            } else {
+                res.send({ result : 'success' })
+            }
+        });
+    });
+
+
     app.post('/games/pick', function(req, res) {
         var body = req.body;
         var user = req.session.user;
