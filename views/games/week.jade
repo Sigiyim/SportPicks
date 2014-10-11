@@ -34,3 +34,5 @@ html
                             input(type="hidden", name="_id", value=game._id)
                             input(type="hidden", name="week", value=game.week)
                             input(type="submit", class="btn btn-primary btn-block", value="Pick")
+                            if game.winner
+                                div(class="col-xs-12")="Winner: " + game.winner

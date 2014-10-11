@@ -106,6 +106,8 @@ Db.connect(connectionString, function(err, db) {
                     .find({
                         user : req.session.user.username
                         , week: weekNum
+                    }, {}, {
+                        'sort' : 'time'
                     })
                     .toArray(function(err, picks) {
                         var pickObj = {};
@@ -113,8 +115,6 @@ Db.connect(connectionString, function(err, db) {
                         picks.forEach(function(item) {
                             pickObj[item.game] = item;
                         });
-
-                        console.log(pickObj);
 
                         res.render('games/week', { week : weekNum, games : games, picks : pickObj });
                     });
@@ -129,11 +129,13 @@ Db.connect(connectionString, function(err, db) {
     });
     app.post('/games/new', function(req, res) {
         var body = req.body;
+        var date = new Date(body.date);
         var game = {
             week: parseInt(body.week)
             , awayTeam: body.awayTeam
             , homeTeam: body.homeTeam
             , date: body.date
+            , time: date.getTime()
         }
 
         db.collection("games").insert(game, function(err, doc) {
@@ -156,7 +158,6 @@ Db.connect(connectionString, function(err, db) {
             if ( err ) {
                 res.send({ result : 'failure', message: 'Game not found' });
             } else {
-                console.log(doc);
                 res.render('games/edit', { game : doc });
             }
         })
@@ -196,10 +197,6 @@ Db.connect(connectionString, function(err, db) {
         db.collection('picks').insert(pick, function(err, doc) {
             res.redirect('/games/week?week=' + body.week);
         });
-    });
-
-    app.get('/url/test', function(req, res) {
-        res.send({ url : req.url });
     });
 
     var server = app.listen(app.get('port'), function() {
