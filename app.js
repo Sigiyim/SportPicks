@@ -18,6 +18,10 @@ app.use(expressSession({secret: 'hMrtq6nzoyELXChVqCKVGyBpudZjtmpPOE5AzVzz9zYIFe0
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
+app.use(function(req, res, next) {
+    next();
+});
+
 Db.connect(connectionString, function(err, db) {
     app.all('*', function(req, res, next) {
         req.db = db;
@@ -87,6 +91,7 @@ Db.connect(connectionString, function(err, db) {
     });
 
     app.get('/games/week', function(req, res) {
+        if ( !req.session.user ) { res.send({ result: 'failure', message: 'Not logged in'})}
         var weekNum = parseInt(req.query['week']);
 
         req.db.collection('games')
@@ -146,6 +151,10 @@ Db.connect(connectionString, function(err, db) {
         db.collection('picks').insert(pick, function(err, doc) {
             res.redirect('/games/week?week=' + body.week);
         });
+    });
+
+    app.get('/url/test', function(req, res) {
+        res.send({ url : req.url });
     });
 
     var server = app.listen(app.get('port'), function() {
